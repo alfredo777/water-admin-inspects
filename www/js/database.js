@@ -1,5 +1,5 @@
 /*active record min phonegap*/
-var myDataBase = window.openDatabase("mydb", "1.0", "mydb", 1000000);
+var myDataBase = window.openDatabase("mydbx", "1.0", "mydb", 1000000);
 var obJCall = [];
 var Schema = {
     "users": {
@@ -23,9 +23,9 @@ var Schema = {
         "procesor": "(?,?,?,?)"
     },
     "inspects": {
-        "accessor": "(Id,name,address,inconforme,acount,meter,t_ser,additional_data,date,visit_date,general_inspect,shooting_conditions,home_room,number_of_people,ordeno_prueba_de_inspeccion,property_activity,anomalies,meter_conditions,additional_report)",
-        "progresor": "(Id INTEGER PRIMARY KEY, name VARCHAR(255), address VARCHAR(255), inconforme VARCHAR(255), acount VARCHAR(255), meter VARCHAR(255), t_ser VARCHAR(255), additional_data VARCHAR(255), date VARCHAR(255), visit_date VARCHAR(255), general_inspect VARCHAR(255), shooting_conditions VARCHAR(255), home_room VARCHAR(255), number_of_people VARCHAR(255), ordeno_prueba_de_inspeccion VARCHAR(255), property_activity VARCHAR(255), anomalies VARCHAR(255), meter_conditions VARCHAR(255), additional_report VARCHAR(255))",
-        "procesor": "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+        "accessor": "(Id,name,address,inconforme,acount,meter,t_ser,additional_data,date,visit_date,general_inspect,shooting_conditions,home_room,number_of_people,ordeno_prueba_de_inspeccion,property_activity,anomalies,meter_conditions,additional_report,meter_anomaly,last_lecture,in_charge,other_obs)",
+        "progresor": "(Id INTEGER PRIMARY KEY, name VARCHAR(255), address VARCHAR(255), inconforme VARCHAR(255), acount VARCHAR(255), meter VARCHAR(255), t_ser VARCHAR(255), additional_data VARCHAR(255), date VARCHAR(255), visit_date VARCHAR(255), general_inspect VARCHAR(255), shooting_conditions VARCHAR(255), home_room VARCHAR(255), number_of_people VARCHAR(255), ordeno_prueba_de_inspeccion VARCHAR(255), property_activity VARCHAR(255), anomalies VARCHAR(255), meter_conditions VARCHAR(255), additional_report VARCHAR(255), meter_anomaly VARCHAR(255), last_lecture VARCHAR(255), in_charge VARCHAR(255), other_obs VARCHAR(255))",
+        "procesor": "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
     },
     "service_contracts": {
          "accessor": "(drinking_water,sewage_system,acount,meter,diameter,applicant_name,address,colony,phone,bussiness_name,rfc,commercial_bussines,legal_representative,type_service,legal_title)",

@@ -2,28 +2,148 @@
 <script type="text/javascript" src="js/camera.js"></script>
 <script type="text/javascript" src="js/database.js"></script>
 <script type="text/javascript" src="js/inspect.js"></script>
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,500" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animsition/3.5.2/css/animsition.css">
+<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue_grey-light_blue.min.css">
+<link rel="stylesheet" href="css/swipebox.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/adavanced.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+
 <main class="mdl-layout__content settings" style="margin-bottom:250px;">
 <div class="superinput" id="createinspect" data-updater="{{Id}}">
-<p class="title">Formulario de Inspección</p>
-      <script type="text/javascript">
-            var dateinsert = new Date().toLocaleString();
-            $('#visit_date').val(dateinsert);
-       </script>
-    <input type="text" placeholder="Fecha de inspección" id="visit_date" data-asignation="form" data-updater="{{Id}}" style="display:none;" />
-    </br><p>Actividades a realizar</p></br>
-    <input type="text" placeholder="Inspección general" id="general_inspect" data-asignation="form" data-updater="{{Id}}" />
-    <input type="text" placeholder="Condiciones del medidor" id="shooting_conditions" data-asignation="form" data-updater="{{Id}}"/>
-    <input type="text" placeholder="Casa Sola" id="home_room" data-asignation="form" data-updater="{{Id}}" />
-    <input type="text" placeholder="Personas que habital." id="number_of_people" data-asignation="form" data-updater="{{Id}}" />
-    <input type="text" placeholder="Ordenó" id="ordeno_prueba_de_inspeccion" data-asignation="form" data-updater="{{Id}}" />
-    </br><p>Informe</p></br>
-    <input type="text" placeholder="Giro y descripción del inmueble." id="property_activity" data-asignation="form" data-updater="{{Id}}" />
-    <input type="text" placeholder="Anomalía encontrada." id="anomalies" data-asignation="form"  data-updater="{{Id}}"/>
-    <input type="text" placeholder="Condiciones del medidor" id="meter_conditions" data-asignation="form" data-updater="{{Id}}" />
-    <input type="text" placeholder="Informe adicional" id="additional_report" data-asignation="form" data-updater="{{Id}}" />
-    <div class="cameraopts">
-      <div class="btncamera" onclick="capturePhotoNoRoute();"><i class="fa fa-camera-retro"></i></div>
+    <div id="steap1">
+        <p class="title">Formulario de Inspección</p>
+        <script type="text/javascript">
+        var dateinsert = new Date().toLocaleString();
+        $('#visit_date').val(dateinsert);
+        </script>
+        <input type="text" placeholder="Fecha de inspección" id="visit_date" data-asignation="form" data-updater="{{Id}}" style="display:none;" />
+        </br><p>Actividades a realizar</p></br>
+        <input type="text" placeholder="Inspección general" id="general_inspect" data-asignation="form" data-updater="{{Id}}" />
+        <input type="text" placeholder="Condiciones del medidor" id="shooting_conditions" data-asignation="form" data-updater="{{Id}}"/>
+        <input type="text" placeholder="Casa Sola" id="home_room" data-asignation="form" data-updater="{{Id}}" />
+        <input type="text" placeholder="Personas que habital." id="number_of_people" data-asignation="form" data-updater="{{Id}}" />
+        <input type="text" placeholder="Ordenó" id="ordeno_prueba_de_inspeccion" data-asignation="form" data-updater="{{Id}}" />
+        <input type="text" placeholder="Nombre del que recibe" id="in_charge" data-asignation="form" data-updater="{{Id}}" />
+
+        <div class="btn" id="to-second">Siguiente</div>
     </div>
-    <div class="image-form" id="images-adding" style="width:100%; margin-bottom:50px;"></div>
-    <div class="btn" onclick="updateInspect({{Id}});">Generar la Inspección</div>
+        
+     <div id="steap2" style="display:none;">
+        </br><p>Informe</p></br>
+        <b>Inmueble</b></br>
+        <input type="text" placeholder="Giro y descripción del inmueble." id="property_activity" data-asignation="form" data-updater="{{Id}}" />
+        <b>Anomalías del Inmueble</b></br>
+        <div class="anomalies-home">
+            <div class="checkbox" data-torecord="anomalies" data-arrayx="anomalies">Fuga en tuberia del medidor a las cisterna, pila o tinaco(s)</div>
+            <div class="checkbox" data-torecord="anomalies" data-arrayx="anomalies">Fuga en cisterna, pila o tinaco(s) por ruptura</div>
+            <div class="checkbox" data-torecord="anomalies" data-arrayx="anomalies">Fuga en cisterna, pila o tinaco(s) por valvula de alta presión</div>
+            <div class="checkbox" data-torecord="anomalies" data-arrayx="anomalies">Fuga en sanitario(s), especificar, rebosadero, Rana, Etc Y ubicación</div>
+            <div class="checkbox" data-torecord="anomalies" data-arrayx="anomalies">Doble alimentación en cisterna pila o tinacos</div>
+            <div class="checkbox" data-torecord="anomalies" data-arrayx="anomalies">Otra toma localizada en el interior del inmueble sin contrato</div>
+        </div>
+        <b>Medidor</b></br>
+        <input type="text" placeholder="Condiciones del medidor" id="meter_conditions" data-asignation="form" data-updater="{{Id}}" />
+        <b>Anomalias del medidor</b></br>
+        <div class="anomalies-home">
+            <div class="checkbox" data-torecord="meter_anomaly" data-arrayx="meter_anomaly">Medidor invertido</div>
+            <div class="checkbox" data-torecord="meter_anomaly" data-arrayx="meter_anomaly">Medidor con una TEE antes, con toma sin contrato</div>
+            <div class="checkbox" data-torecord="meter_anomaly" data-arrayx="meter_anomaly">Relojería sobrepuesta en medidor</div>
+            <div class="checkbox" data-torecord="meter_anomaly" data-arrayx="meter_anomaly">Relojería de medidor con orificio</div>
+            <div class="checkbox" data-torecord="meter_anomaly" data-arrayx="meter_anomaly">Medidor sin relojería</div>
+            <div class="checkbox" data-torecord="meter_anomaly" data-arrayx="meter_anomaly">Medidor con fuga en conexiones (PATAS)</div>
+            <div class="checkbox" data-torecord="meter_anomaly" data-arrayx="meter_anomaly">Medidor con fuga en el cuerpo</div>
+            <div class="checkbox" data-torecord="meter_anomaly" data-arrayx="meter_anomaly">Número de matricula del medidor sin coincidir</div>
+            <div class="checkbox" data-torecord="meter_anomaly" data-arrayx="meter_anomaly">Bomba de agua conectada enseguida de medididor.</div>
+            <div class="checkbox" data-torecord="meter_anomaly" data-arrayx="meter_anomaly">Medidor descalibrado y otras</div>
+        </div>
+
+        <div style="display:none;">
+        <input type="text" placeholder="Anomalía encontrada." id="anomalies" data-asignation="form"  data-updater="{{Id}}"/>
+        <input type="text" placeholder="Anomalía en el medidor." id="meter_anomaly" data-asignation="form"  data-updater="{{Id}}"/>
+
+        </div>
+        <b>Informe adicional</b>
+        <input type="text" placeholder="Informe adicional" id="additional_report" data-asignation="form" data-updater="{{Id}}" />
+
+        <input type="text" placeholder="Otras observaciones especiales del inspector" id="other_obs" data-asignation="form" data-updater="{{Id}}" />
+
+        <div class="btn" id="to-three">Siguiente</div>
+
+         <script type="text/javascript">
+            $(document).ready(function(){
+                var anomalies_target = []
+                var other_anomailies = []
+                $('.checkbox').click(function(){
+                  var cf = $(this).hasClass('select-check');
+                  var target = $(this).data('torecord');
+                  var arrayx = $(this).data('arrayx');
+                  var htmValue = $(this).html(); 
+                  if(cf){
+                    $(this).removeClass('select-check');
+                    if(arrayx == 'anomalies'){
+                      anomalies_target.splice(anomalies_target.indexOf(htmValue),1);
+                      $('#'+target).val(anomalies_target);
+                    }else{
+                      other_anomailies.splice(other_anomailies.indexOf(htmValue),1);
+                      $('#'+target).val(other_anomailies);
+                    }
+
+                  }else{
+                    $(this).addClass('select-check');
+                    if(arrayx == 'anomalies'){
+                      anomalies_target.push(htmValue);
+                        $('#'+target).val(anomalies_target);
+                    }else{
+                      other_anomailies.push(htmValue);
+                        $('#'+target).val(other_anomailies);
+                    }
+
+                  }
+                });
+            });
+        </script>
+    </div>
+    <div id="steap3" style="display:none;">
+        <div class="cameraopts">
+            <div class="btncamera" onclick="capturePhotoNoRoute();"><i class="fa fa-camera-retro"></i></div>
+        </div>
+        <div class="image-form" id="images-adding" style="width:100%; margin-bottom:50px;"></div>
+        <div class="btn" onclick="updateInspect({{Id}});">Generar la Inspección</div>
+    </div>
 </div>
+<script type="text/javascript">
+$('#to-second').click(function(){
+var general_inspect, shooting_conditions, number_of_people, home_room, ordeno_prueba_de_inspeccion;
+general_inspect = $('#general_inspect').val();
+shooting_conditions  = $('#shooting_conditions').val();
+number_of_people  = $('#number_of_people').val();
+ordeno_prueba_de_inspeccion  = $('#ordeno_prueba_de_inspeccion').val();
+home_room = $('#home_room').val();
+
+if(general_inspect == '' || shooting_conditions == '' ||  number_of_people == '' || ordeno_prueba_de_inspeccion == '', home_room == ''){
+alert("Es necesario que llenes todos los campos para continuar")
+}else{
+$('#steap1').hide();
+$('#steap2').show();
+}
+});
+
+$('#to-three').click(function(){
+property_activity = $('#property_activity').val();
+anomalies  = $('#anomalies').val();
+meter_conditions  = $('#meter_conditions').val();
+additional_report  = $('#additional_report').val();
+
+if(property_activity == '' || anomalies == '' ||  meter_conditions == '' || additional_report == ''){
+alert("Es necesario que llenes todos los campos para continuar")
+}else{
+$('#steap2').hide();
+$('#steap3').show();
+}
+
+});
+</script>

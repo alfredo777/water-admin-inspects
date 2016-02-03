@@ -38,6 +38,7 @@ $(document).ready(function() {
                 return alert("Error...");
             dropTable("routes");
             dropTable("images");
+            dropTable("inspects");
             window.localStorage.setItem("lecture", "0");
             $.each(data, function(i, item) {
                 var dt = data[i];
@@ -50,7 +51,7 @@ $(document).ready(function() {
                     "t2": "Ruta de reportes de lectura",
                     "card": "{{card}}"
                 }
-                loadDBTPL(reports, 'reportslist', 'internal-loader');
+                loadDBTPL(reports, 'allinspects', 'loader-afg');
             }, 500);
 
             $('#sincornize-inspects').submit();
@@ -59,10 +60,11 @@ $(document).ready(function() {
         calllInspects(usercard, function(data, err){
             $.each(data, function(i, item) {
                 var dt = data[i];
-                var compose_data = [dt.id, dt.name, dt.address, dt.inconforme, dt.acount, dt.meter, dt.t_ser, dt.additional_data, dt.date, dt.visit_date, dt.general_inspect, dt.shooting_conditions, dt.home_room, dt.number_of_people, dt.ordeno_prueba_de_inspeccion, dt.property_activity, dt.anomalies, dt.meter_conditions, dt.additional_report];
+                var compose_data = [dt.id, dt.name, dt.address, dt.inconforme, dt.acount, dt.meter, dt.t_ser, dt.additional_data, dt.date, dt.visit_date, dt.general_inspect, dt.shooting_conditions, dt.home_room, dt.number_of_people, dt.ordeno_prueba_de_inspeccion, dt.property_activity, dt.anomalies, dt.meter_conditions, dt.additional_report, dt.meter_anomaly, dt.last_lecture, dt.in_charge, dt.other_obs];
                 var insertion = insertData(compose_data, "inspects", myDataBase, Schema, false);
             });
         });
+     
         return false;
     });
 

@@ -1180,3 +1180,8 @@ thead, tbody, .mdl-data-table__cell--non-numeric {
 }
 }
 
+.load{
+  width: 70%;
+  padding: 20px;
+}
+

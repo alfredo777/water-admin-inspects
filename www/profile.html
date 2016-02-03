@@ -6,45 +6,23 @@
     <h4>{{name}}</h4>
   </div>
   </center>
-  <div class="sdl-layout__container">
-    <div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button is-small-screen has-drawer is-upgraded">
-      <main class="mdl-layout__content settings">
-      <p class="title">Funciones de la aplicación.</p>
-      <ul>
-        <li class="ajaxify tapInEffected tapOutEffected hover" onclick="loadDBTPL(reports, 'reportslist', 'internal-loader')">
-          <div style="float:left; width:10%;"><img src="img/medidor.svg"></img></div>
-          <span>Reporte de toma de lectura</span>
-          <div class="clr"></div>
-        </li>
-        <li>
-          <div style="float:left; width:10%;"  onclick="loadDBTPL(reports, 'allinspects', 'internal-loader')"><img src="img/inspect.svg"></img></div>
-          <span>Reportes de inspección</span>
-          <div class="clr"></div>
-        </li>
-      </ul>
-      </main>
-    </div>
-  </div>
+  <div id="loader-afg"></div>
 </div>
 <div class="foo-menu">
-  <div class="tab-foo" onclick="loadDBTPL(reports, 'initial_menu', 'internal-loader')">
+  <div class="tab-foo" onclick="loadDBTPL(reports, 'allinspects', 'loader-afg');">
     <i class="fa fa-home"></i>
   </div>
-  <div class="sp-foo"></div>
-  <div class="tab-foo" style="width:50px;" onclick="loadDBTPL(reports, 'reportslist', 'internal-loader')">
-    <i class="fa fa-stumbleupon"></i>
-  </div>
-  <div class="sp-foo"></div>
-  <div class="tab-foo" onclick="loadDBTPL(reports, 'inspect', 'internal-loader')">
-    <i class="fa fa-user-secret"></i>
-  </div>
-  <div class="sp-foo"></div>
-  <div class="tab-foo" onclick="$('#sincornize').submit();">
+  <div id="sincro1">
+  <div class="sp-foo" ></div>
+  <div class="tab-foo"   onclick="$('#sincornize').submit();">
     <i class="fa fa-download"></i>
   </div>
-  <div class="sp-foo"></div>
-  <div class="tab-foo" onclick="loadDBTPL(reports, 'sincronize', 'internal-loader')">
+  </div>
+  <div id="sincro2">
+  <div class="sp-foo" ></div>
+  <div class="tab-foo" onclick="loadDBTPL(reports, 'sincronize', 'loader-afg')" >
     <i class="fa fa-upload"></i>
+  </div>
   </div>
   <div class="sp-foo"></div>
   <div class="tab-foo" onclick="clearSession('active_user')">
@@ -63,6 +41,10 @@ var reports = {
 "titles": "Todos los reportes",
 "t2": "Ruta de reportes de lectura",
 "card": "{{card}}",
-"name": "{{name}}"
+"name": "{{name}}",
 }
+
+$(document).ready(function(){
+  loadDBTPL(reports, 'allinspects', 'loader-afg');
+});
 </script>

@@ -13,14 +13,14 @@
    $("#inspect-{{Id}}").click(function(){
      extractQuery("inspects", "Id", {{Id}}, function(callback){
       var inspect = callback;
-      loadDBTPL(inspect, 'inspect_view', 'internal-loader');
+      loadDBTPL(inspect, 'inspect_view', 'loader-afg');
      });
    });
    $("#inspect-{{Id}}-button").click(function(){
       var loc = {
         "Id": "{{Id}}"
       }
-      loadDBTPL(loc, 'inspect', 'internal-loader')
+      loadDBTPL(loc, 'inspect', 'loader-afg')
    });
 </script>
 

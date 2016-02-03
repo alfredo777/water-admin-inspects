@@ -38,7 +38,7 @@ function createImagesForInspects(id){
     setTimeout(function(){
       extractQuery("inspects", "Id", id, function(callback){
       var inspect = callback;
-      loadDBTPL(inspect, 'inspect_view', 'internal-loader');
+      loadDBTPL(inspect, 'inspect_view', 'loader-afg');
      });
     }, 1000);
 }

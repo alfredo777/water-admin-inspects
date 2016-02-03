@@ -1,9 +1,8 @@
 
 <main class="mdl-layout__content settings">
 <p class="title">Inspección</p>
-<a  onclick="loadDBTPL('{}', 'allinspects', 'internal-loader')" >Regresar a las inspecciónes</a>
  <div class="grid-info">
-      <ul>
+    <ul>
       <li> <b> Nombre:</b>{{name}}</li>
       <li> <b> Dirección:</b> {{address}}</li>
       <li> <b> Inconformidad:</b> {{inconforme}}</li>
@@ -20,8 +19,11 @@
       <li> <b> Actividad del domicilio:</b> {{property_activity}}</li>
       <li> <b> Anomalias:</b> {{anomalies}}</li>
       <li> <b> Condición del medidor:</b> {{meter_conditions}}</li>
+      <li> <b> Anomalias del medidor: </b> {{meter_anomaly}}</b></li>
       <li> <b> Reporte Adicional:</b> {{additional_report}}</li>
-      </ul>
+      <li> <b> Persona que recibio:</b> {{in_charge}}</li>
+      <li> <b> Otras observaciones especiales del inspector:</b> {{other_obs}}</li>
+    </ul>
  </div>
  <script type="text/javascript">
   polimorfismQuery("images", {{Id}}, "inspects", function(callback){

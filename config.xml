@@ -1,6 +1,6 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.helloworld" version="1.0.0">
-  <name>water-admin</name>
-  <description>Hello World sample application that responds to the deviceready event.</description>
+  <name>inspecciones de CAPAMA</name>
+  <description>App toma de inspecciones</description>
   <author href="http://rockstars.mx" email="contact@rockstars.mx">JARDA</author>
   <content src="index.html"/>
   <preference name="permissions" value="none"/>
